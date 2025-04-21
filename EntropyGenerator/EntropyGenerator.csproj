@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Raylib-cs" Version="7.0.1" />
+      <PackageReference Include="TextCopy" Version="6.2.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="fonts\dos-vga-9x16.ttf" />
+        <EmbeddedResource Include="fonts\dos-vga-license.txt" />
+    </ItemGroup>
+    
+</Project>
