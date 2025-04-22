@@ -15,6 +15,7 @@ public class LineEdit
     public string Text = "";
     private Color textDrawColor;
     public Font Font;
+    private int fontSize = 16;
 
     public LineEdit(float x, float y, float width, float height, bool canEdit = true)
     {
@@ -113,11 +114,12 @@ public class LineEdit
         textDrawColor = CanEdit ? textColor : Color.DarkGray;
 
         Raylib.DrawTextEx(Font, Text, new Vector2(Box.X + textXOffset - scrollOffset, Box.Y + textYOffset), 16, 1, textDrawColor);
+        
+        string visibleText = Text.Substring(0, caretPosition);
         if (IsActive && showCaret)
         {
-            var caretX = (int)Box.X + textXOffset - scrollOffset +
-                         Raylib.MeasureText(Text[..Math.Min(caretPosition, Text.Length)], 16);
-            Raylib.DrawRectangle(caretX, (int)Box.Y + textYOffset, 2, 16, textColor);
+            var caretX = Box.X + textXOffset + Raylib.MeasureTextEx(Font, visibleText, fontSize, 1).X;
+            Raylib.DrawRectangle((int)caretX, (int)Box.Y + textYOffset, 2, 16, textColor);
         }
 
         Raylib.EndScissorMode();
